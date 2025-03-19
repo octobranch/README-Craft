@@ -8,7 +8,7 @@ Generador de README.md interactivo con:
 ✅ 100% cliente-side
 
 ## Uso rápido 🚀
-1. Visita [la demo en GitHub Pages](octobranch.github.io/README-Craft/)
+1. Visita [la demo en GitHub Pages](https://octobranch.github.io/README-Craft/)
 2. Completa los campos del formulario
 3. ¡Descarga tu README.md personalizado!
 
