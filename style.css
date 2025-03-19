@@ -1,56 +1,107 @@
 :root {
     --primary: #2F80ED;
-    --background: #f8f9fa;
-    --text: #212529;
-    --glass: rgba(255, 255, 255, 0.9);
-    --border: #dee2e6;
+    --secondary: #6C757D;
+    --background-light: #f8f9fa;
+    --background-dark: #212529;
+    --text-light: #212529;
+    --text-dark: #e9ecef;
+    --glass-light: rgba(255, 255, 255, 0.85);
+    --glass-dark: rgba(40, 40, 40, 0.9);
+    --border-light: #dee2e6;
+    --border-dark: #495057;
+    --highlight: #FF6347;
+    --highlight-light: #ffb3b3;
+    --header-gradient: linear-gradient(135deg, #1a73e8, #6c8eff);
 }
 
 [data-theme="dark"] {
     --primary: #6c8eff;
-    --background: #1a1a1a;
-    --text: #e9ecef;
-    --glass: rgba(40, 40, 40, 0.9);
-    --border: #495057;
+    --secondary: #b5b5b5;
+    --background-light: #1a1a1a;
+    --background-dark: #212529;
+    --text-light: #e9ecef;
+    --text-dark: #f8f9fa;
+    --glass-light: rgba(40, 40, 40, 0.85);
+    --glass-dark: rgba(30, 30, 30, 0.95);
+    --border-light: #495057;
+    --border-dark: #495057;
+    --highlight: #FF6347;
+    --highlight-light: #ffb3b3;
+    --header-gradient: linear-gradient(135deg, #1a73e8, #6c8eff);
 }
 
 * {
-    transition: background 0.3s, color 0.3s;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s ease;
 }
 
 body {
     font-family: 'Inter', system-ui, sans-serif;
-    background: var(--background);
-    color: var(--text);
+    background: var(--background-light);
+    color: var(--text-light);
     margin: 0;
     padding: 20px;
     line-height: 1.6;
+    transition: all 0.3s ease-in-out;
+}
+
+[data-theme="dark"] body {
+    background: var(--background-dark);
+    color: var(--text-dark);
 }
 
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 2rem;
-    padding: 2rem 0;
+    margin-bottom: 3rem;
+    padding: 4rem 0;
+    position: relative;
+    z-index: 10;
+    background: var(--header-gradient);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 12px 60px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 .editor-preview {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr 1fr;
+    position: relative;
+    z-index: 10;
 }
 
 .glass {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: var(--glass-light);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+[data-theme="dark"] .glass {
+    background: var(--glass-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.glass:hover {
+    box-shadow: 0 15px 80px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
 }
 
 .form-group {
@@ -60,44 +111,78 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--secondary);
 }
 
 input, textarea, select {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text);
+    padding: 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    transition: background 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+[data-theme="dark"] input, [data-theme="dark"] textarea, [data-theme="dark"] select {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-dark);
+}
+
+input:focus, textarea:focus, select:focus {
+    background: var(--hover-bg);
+    border-color: var(--primary);
+    outline: none;
 }
 
 .btn {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    background-color: var(--highlight);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .markdown-preview {
-    padding: 1rem;
+    padding: 2rem;
     min-height: 500px;
-    overflow-wrap: break-word;
+    background: var(--glass-light);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+}
+
+[data-theme="dark"] .markdown-preview {
+    background: var(--glass-dark);
 }
 
 .markdown-preview h1 {
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .theme-toggle {
@@ -105,6 +190,31 @@ input, textarea, select {
     top: 20px;
     right: 20px;
     cursor: pointer;
-    font-size: 1.5rem;
-    padding: 10px;
-    border-radius: 50
+    font-size: 1.8rem;
+    padding: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.15);
+    background: var(--highlight-light);
+}
+
+@media (max-width: 768px) {
+    .editor-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .glass {
+        padding: 1.5rem;
+    }
+
+    .markdown-preview h1 {
+        font-size: 2rem;
+    }
+}
