@@ -1,41 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README Craft - Generador inteligente de README</title>
+    <title>README Craft Pro - Generador de README Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
 </head>
 <body>
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+    
     <div class="container">
-        <h1>📄 README Craft</h1>
+        <header class="header">
+            <h1>🚀 README Craft Pro</h1>
+            <p>Crea READMEs profesionales en minutos</p>
+        </header>
+
         <div class="editor-preview">
-            <div class="editor">
-                <h2>Configuración</h2>
+            <!-- Sección Editor -->
+            <div class="editor glass">
+                <h2>📝 Configuración</h2>
+                
                 <div class="form-group">
-                    <label>Nombre del proyecto:</label>
-                    <input type="text" id="projectName" placeholder="Mi Proyecto Increíble">
+                    <label>Nombre del proyecto</label>
+                    <input type="text" id="projectName" placeholder="Mi Super Proyecto">
                 </div>
-                <!-- Más campos de entrada -->
-                <div class="template-selector">
-                    <h3>Plantillas:</h3>
-                    <select id="templateSelect">
-                        <option value="default">Default</option>
-                        <option value="webapp">Aplicación Web</option>
-                        <option value="cli">CLI Tool</option>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Características (separadas por comas)</label>
+                    <input type="text" id="features" placeholder="Rápido, Moderno, Responsive">
+                </div>
+
+                <div class="form-group">
+                    <label>Comandos de instalación</label>
+                    <textarea id="installSteps" rows="2">npm install
+npm run dev</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Licencia</label>
+                    <select id="license">
+                        <option value="MIT">MIT</option>
+                        <option value="Apache-2.0">Apache 2.0</option>
+                        <option value="GPL-3.0">GPL 3.0</option>
                     </select>
                 </div>
             </div>
-            <div class="preview">
-                <h2>Vista Previa</h2>
+
+            <!-- Sección Preview -->
+            <div class="preview glass">
+                <h2>👁️ Vista Previa</h2>
                 <div id="previewContent" class="markdown-preview"></div>
+                
                 <div class="actions">
-                    <button onclick="copyToClipboard()">📋 Copiar</button>
-                    <button onclick="downloadMD()">⬇️ Descargar</button>
+                    <button class="btn" onclick="copyToClipboard()">📋 Copiar Markdown</button>
+                    <button class="btn" onclick="downloadMD()">⬇️ Descargar README.md</button>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
