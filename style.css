@@ -1,0 +1,24 @@
+:root {
+    --primary: #2F80ED;
+    --background: #f0f2f5;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.editor-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Estilos adicionales para inputs, botones y diseño responsive */
