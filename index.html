@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README Craft - Generador inteligente de README</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📄 README Craft</h1>
+        <div class="editor-preview">
+            <div class="editor">
+                <h2>Configuración</h2>
+                <div class="form-group">
+                    <label>Nombre del proyecto:</label>
+                    <input type="text" id="projectName" placeholder="Mi Proyecto Increíble">
+                </div>
+                <!-- Más campos de entrada -->
+                <div class="template-selector">
+                    <h3>Plantillas:</h3>
+                    <select id="templateSelect">
+                        <option value="default">Default</option>
+                        <option value="webapp">Aplicación Web</option>
+                        <option value="cli">CLI Tool</option>
+                    </select>
+                </div>
+            </div>
+            <div class="preview">
+                <h2>Vista Previa</h2>
+                <div id="previewContent" class="markdown-preview"></div>
+                <div class="actions">
+                    <button onclick="copyToClipboard()">📋 Copiar</button>
+                    <button onclick="downloadMD()">⬇️ Descargar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
